@@ -336,20 +336,11 @@
         -->
         <include refid="org.camunda.bpm.engine.impl.persistence.entity.AuthorizationEntity.authCheckJoinWithoutOnClause"/>
         AUTH ON (
-          <if test="DB_TYPE == 'mysql'">
             AUTH.RESOURCE_ID_ = SELF.PROC_DEF_KEY_ OR
             <if test="authCheck.isHistoricInstancePermissionsEnabled">
                 AUTH.RESOURCE_ID_ = SELF.ID_ OR
             </if>
             AUTH.RESOURCE_ID_ = '*')
-          </if>
-          <if test="DB_TYPE == null">
-            AUTH.RESOURCE_ID_ in (
-            <if test="authCheck.isHistoricInstancePermissionsEnabled">
-                SELF.ID_,
-            </if>
-            SELF.PROC_DEF_KEY_, '*'))
-          </if>
     </if>
 
     <bind name="INC_JOIN" value="false" />
