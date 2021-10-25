@@ -1,0 +1,16 @@
+camunda.bpm.admin-user:
+  id: demo
+  password: demo
+  
+camunda.bpm.authorization.enabled: true
+
+logging.level.org.camunda.bpm.engine.impl.persistence.entity.HistoricProcessInstanceEntity: DEBUG
+logging.file.name: logs/camunda-log.txt
+
+
+spring.datasource:
+  url: jdbc:mysql://portainer.camunda.loc:30230/process-engine?sendFractionalSeconds=false
+  username: camunda
+  password: camunda
+  driver-class-name: com.mysql.jdbc.Driver
+camunda.bpm.database.type: mysql
